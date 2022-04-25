@@ -1,0 +1,22 @@
+{
+  "name": "nodeapi",
+  "version": "1.0.0",
+  "description": "restful web services lessons",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AleDavMart/BUILDINGRESTfulAPIs.git"
+  },
+  "author": "Aleyda Davalos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AleDavMart/BUILDINGRESTfulAPIs/issues"
+  },
+  "homepage": "https://github.com/AleDavMart/BUILDINGRESTfulAPIs#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
