@@ -4,7 +4,9 @@
   "description": "restful web services lessons",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
+    "start": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +19,23 @@
   },
   "homepage": "https://github.com/AleDavMart/BUILDINGRESTfulAPIs#readme",
   "dependencies": {
-    "express": "^4.17.3"
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0"
+  },
+  "nodemonConfig":{
+    "restartable": "rs",
+    "ignore": [
+      "node_modules/**/node_modules"
+    ],
+    "delay":"2500",
+    "env":{
+      "NODE_ENV":"development",
+      "PORT": 4000
+    }
   }
 }
