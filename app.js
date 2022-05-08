@@ -9,10 +9,13 @@ const Book = require('./models/bookModel'); // Creating a book model - mongo use
 
 
 bookRouter.route('/books')
-  .get((req, res) => { //like a regular get route
-    const response = { hello: 'This is my API' };
-
-    res.json(response);
+  .get((req, res) => { //query to the mongodb and take action
+    Book.find((err, books) => {
+      if (err) {
+        return res.send(err);
+      }
+      return res.json(books);
+    });
   });
 app.use('/api', bookRouter);
 
