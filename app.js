@@ -10,7 +10,10 @@ const Book = require('./models/bookModel'); // Creating a book model - mongo use
 
 bookRouter.route('/books')
   .get((req, res) => { //query to the mongodb and take action
-    const { query } = req; //using the query straight from the request 
+    const query = {};// creating an empty object for query
+    if(req.query.genre){
+      query.genre = req.query.genre; //filtering queries based on generes, so weird queries will be ignored
+    }
     Book.find(query, (err, books) => {
       if(err) {
         return res.send(err);
