@@ -10,8 +10,9 @@ const Book = require('./models/bookModel'); // Creating a book model - mongo use
 
 bookRouter.route('/books')
   .get((req, res) => { //query to the mongodb and take action
-    Book.find((err, books) => {
-      if (err) {
+    const { query } = req; //using the query straight from the request 
+    Book.find(query, (err, books) => {
+      if(err) {
         return res.send(err);
       }
       return res.json(books);
