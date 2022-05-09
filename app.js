@@ -14,6 +14,9 @@ app.use(bodyParser.json()); //pull JSON from POST body and format in req.body
 bookRouter.route('/books')
   .post((req,res)=>{
     const book = new Book(req.body); //Whatever gets posted to this route will create a new book in DB
+
+    console.log(book);// checking to see what book is
+    return res.json(book); //returning that object
   })
   .get((req, res) => { //query to the mongodb and action to be taken
     const query = {};// creating an empty object for query
