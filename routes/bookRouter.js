@@ -23,33 +23,35 @@ function routes(Book) {
         return res.json(books);
       });
     });
-
+  bookRouter.use('/books/:bookId', (req, res, next) => { //Created Middleware to inject bookId to the requests
+    Book.findById(req.params.bookId, (err, book) => {
+      if (err) {
+        return res.send(err);
+      }
+      if (book) {
+        req.book = book;
+        return next(); //letting it know we are done and to continue
+      }
+      return res.sendStatus(404);
+    });
+  });
   bookRouter.route('/books/:bookId') //filtering a single book by ID
-    .get((req, res) => { //query to the mongodb and action to be taken
-
-      Book.findById(req.params.bookId, (err, book) => {
-        if (err) {
-          return res.send(err);
-        }
-        return res.json(book);
-      });
-    })
+    .get((req, res) => res.json(req.book))
     .put((req, res) => {
-      Book.findById(req.params.bookId, (err, book) => {
+      const { book } = req;
+      book.title = req.body.title;
+      book.author = req.body.author;
+      book.genre = req.body.genre;
+      book.read = req.body.read;
+      req.book.save((err) => {
         if (err) {
           return res.send(err);
         }
-        book.title = req.body.title;
-        book.author = req.body.author;
-        book.genre = req.body.genre;
-        book.read = req.body.read;
-        book.save();
         return res.json(book);
-
       });
-    })
+})
 
-  return bookRouter;//will return the book route back 
+return bookRouter;//will return the book route back 
 }
 
 module.exports = routes; 
