@@ -9,7 +9,7 @@ const Book = require('./models/bookModel'); // Creating a book model - mongo use
 
 
 bookRouter.route('/books')
-  .get((req, res) => { //query to the mongodb and take action
+  .get((req, res) => { //query to the mongodb and action to be taken
     const query = {};// creating an empty object for query
     if(req.query.genre){
       query.genre = req.query.genre; //filtering queries based on generes, so weird queries will be ignored
@@ -22,6 +22,17 @@ bookRouter.route('/books')
     });
   });
 app.use('/api', bookRouter);
+
+bookRouter.route('/books/:bookId') //filtering a single book by ID
+  .get((req, res) => { //query to the mongodb and action to be taken
+    
+    Book.findById(req.params.bookId, (err, book) => {
+      if(err) {
+        return res.send(err);
+      }
+      return res.json(book);
+    });
+  });
 
 app.get('/', (req, res) => {
   res.send('Welcome to my API');
