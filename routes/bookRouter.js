@@ -1,8 +1,8 @@
 const express = require('express');
 
-function routes() {
-  const bookRouter = express.Router();
+function routes(Book) {
 
+  const bookRouter = express.Router();
   bookRouter.route('/books')
     .post((req, res) => {
       const book = new Book(req.body); //Whatever gets posted to this route will create a new book in DB
@@ -34,7 +34,7 @@ function routes() {
       });
     });
 
-    return bookRouter;//will return the book route back 
+  return bookRouter;//will return the book route back 
 }
 
 module.exports = routes; 
