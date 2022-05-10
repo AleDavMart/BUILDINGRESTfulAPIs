@@ -29,4 +29,10 @@ describe('Book CRUD Test', () => {
     Book.deleteMany({}).exec();
     done();
   });
+
+  after((done)=>{ //will close mongoose connection and app (express to close) after testing
+    mongoose.connection.close();
+    app.server.close(done());
+  });
+  
 });
