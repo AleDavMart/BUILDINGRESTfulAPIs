@@ -50,27 +50,37 @@ function routes(Book) {
         return res.json(book);
       });
     })
-      .patch((req, res) => {
-          const { book } = req;
+    .patch((req, res) => {
+        const { book } = req;
+        // eslint-disable-next-line no-underscore-dangle
+        if (req.body._id) { //we do not want to update/mess with the Id
           // eslint-disable-next-line no-underscore-dangle
-          if (req.body._id) { //we do not want to update/mess with the Id
-            // eslint-disable-next-line no-underscore-dangle
-            delete req.body._id;
-          }
+          delete req.body._id;
+        }
 
-          Object.entries(req.body).forEach((item) => { //using to pull out array of key value pairs from body
-            const key = item[0];
-            const value = item[1];
-            book[key] = value;
-          });
-          
-          req.book.save((err) => {
-            if (err) {
-              return res.send(err);
-            }
-            return res.json(book);
-          });
+        Object.entries(req.body).forEach((item) => { //using to pull out array of key value pairs from body
+          const key = item[0];
+          const value = item[1];
+          book[key] = value;
         });
+        
+        req.book.save((err) => {
+          if (err) {
+            return res.send(err);
+          }
+          return res.json(book);
+        });
+      })
+      .delete((req, res) =>{
+        req.book.remove((err)=>{
+          if(err){
+            return res.send(err);
+          }
+          return res.sendStatus(204); //removed status
+        });
+      });
+
+
 
 
   return bookRouter;//will return the book route back 
