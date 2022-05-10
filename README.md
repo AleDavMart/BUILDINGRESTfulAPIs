@@ -10,7 +10,9 @@ Technologies used:
 <li>MongoDB</li>
 <li>Mongoose</li>
 <li>nodemon</li>
-<li>body-parser</li>
+<li>Mocha - testing framework</li>
+<li>Should</li>
+<li>sinon</li>
 </ul>
 
 To run locally:

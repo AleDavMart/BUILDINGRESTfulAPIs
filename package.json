@@ -4,7 +4,7 @@
   "description": "restful web services lessons",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha tests/**/*Tests.js",
     "lint": "eslint .",
     "start": "nodemon app.js"
   },
@@ -27,7 +27,10 @@
   "devDependencies": {
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.0.0",
+    "should": "^13.2.3",
+    "sinon": "^14.0.0"
   },
   "nodemonConfig": {
     "restartable": "rs",
