@@ -1,6 +1,6 @@
 # BUILDINGRESTfulAPIs
 Built a RESTful API for a Books database. You will be able to execute CRUD operations by using the postman collection here. 
-This API includes unit testing using the Mocha framework and integration testing using supertest. 
+This API includes unit testing using the Mocha framework and integration testing for POST using Supertest. The tests will end the sequence by closing the Mongoose connection and app. 
 
 Please use the postman collection to test the API locally. 
 
@@ -13,7 +13,7 @@ Technologies used:
 <li>nodemon</li>
 <li>Mocha - testing framework</li>
 <li>Should</li>
-<li>sinon</li>
+<li>Sinon.js</li>
 </ul>
 
 To run locally:
