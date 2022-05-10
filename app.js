@@ -8,7 +8,7 @@ if(process.env.ENV === 'Test'){
   const db = mongoose.connect('mongodb://localhost/bookAPI_Test');//created a TEST db to keep separate
 }else{
   console.log('This is for real')
-  const db = mongoose.connect('mongodb://localhost/bookAPI-prod');//created a db connection 
+  const db = mongoose.connect('mongodb://localhost/bookAPI');//created a db connection 
 }
 
 const port = process.env.PORT || 3000;

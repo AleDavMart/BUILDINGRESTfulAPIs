@@ -24,7 +24,14 @@ function routes(Book) {
     });
   });
   bookRouter.route('/books/:bookId') //filtering a single book by ID
-    .get((req, res) => res.json(req.book))
+    .get((req, res) => {
+      const returnBook = req.book.toJSON();
+
+      returnBook.links = {};
+      const genre = req.book.genre.replace(' ', '%20'); // to replace the space in the link
+      returnBook.links.FilterByThisGenre = `http://${req.headers.host}/api/books/?genre=${genre}`;
+      res.json(returnBook);
+    })
     .put((req, res) => {
       const { book } = req;
       book.title = req.body.title;
