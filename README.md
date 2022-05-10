@@ -1,5 +1,6 @@
 # BUILDINGRESTfulAPIs
-Built a RESTful API for books. 
+Built a RESTful API for a Books database. You will be able to execute CRUD operations by using the postman collection here. 
+This API includes unit testing using the Mocha framework and integration testing using supertest. 
 
 Please use the postman collection to test the API locally. 
 
