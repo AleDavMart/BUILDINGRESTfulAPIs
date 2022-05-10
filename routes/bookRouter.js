@@ -80,9 +80,6 @@ function routes(Book) {
         });
       });
 
-
-
-
   return bookRouter;//will return the book route back 
 }
 
